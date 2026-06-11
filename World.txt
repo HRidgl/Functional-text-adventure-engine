@@ -1,0 +1,16 @@
+room entrance
+  description "You are in a dusty stone entrance hall."
+  exit north hallway
+  item lantern
+
+room hallway
+  description "A long corridor stretches ahead."
+  exit south entrance
+  exit north library locked iron_key
+
+item lantern
+  description "A battered tin lantern. It still has oil."
+
+item iron_key
+  description "A heavy iron key engraved with a lion."
+  location hallway
