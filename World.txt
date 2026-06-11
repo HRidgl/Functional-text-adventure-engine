@@ -8,6 +8,11 @@ room hallway
   exit south entrance
   exit north library locked iron_key
 
+room library
+  description "A room with lots of books."
+  exit south entrance
+  exit north entrance locked iron_key
+
 item lantern
   description "A battered tin lantern. It still has oil."
 

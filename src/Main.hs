@@ -3,6 +3,7 @@ module Main where
   import System.IO      (hSetBuffering, stdout, BufferMode(..))
   import System.Exit    (exitSuccess)
   import System.Environment (getArgs)
+  import qualified Data.Map.Strict as Map
 
   import Types
   import World
@@ -52,12 +53,6 @@ module Main where
           Left  err  -> putStrLn (renderError err)
           Right room -> putStrLn (describeRoom room world player)
         repl gs
-    where
-      -- pick the room marked as "start" if present, else first room
-      Map = import qualified Data.Map.Strict as Map
-
-  -- We need the Map import; restructure:
-  import qualified Data.Map.Strict as Map
 
   startGame' :: World -> IO ()
   startGame' world =
@@ -95,9 +90,9 @@ module Main where
 
   banner :: String
   banner = unlines
-    [ "╔══════════════════════════════════════╗"
+    [ "╔════════════════════════════════════════════╗"
     , "║   F U N C T I O N A L   A D V E N T U R E  ║"
-    , "╚══════════════════════════════════════╝"
+    , "╚════════════════════════════════════════════╝"
     , "Type 'look' to examine your surroundings."
     , "Type 'help' or '?' for a list of commands."
     , "Type 'quit' to exit."
