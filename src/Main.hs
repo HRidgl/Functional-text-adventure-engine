@@ -1,6 +1,6 @@
 module Main where
 
-  import System.IO      (hSetBuffering, stdout, BufferMode(..))
+  import System.IO      (hSetBuffering, stdout, hFlush, BufferMode(..))
   import System.Exit    (exitSuccess)
   import System.Environment (getArgs)
   import qualified Data.Map.Strict as Map
@@ -18,7 +18,6 @@ module Main where
 
   main :: IO ()
   main = do
-    hSetBuffering stdout NoBuffering
     args <- getArgs
     worldPath <- case args of
       (p:_) -> return p
@@ -75,6 +74,7 @@ module Main where
   repl :: GameState -> IO ()
   repl gs = do
     putStr "> "
+    hFlush stdout
     line <- getLine
     case parseCommand line of
       Left  msg -> do putStrLn msg;  repl gs
@@ -90,9 +90,9 @@ module Main where
 
   banner :: String
   banner = unlines
-    [ "╔════════════════════════════════════════════╗"
-    , "║   F U N C T I O N A L   A D V E N T U R E  ║"
-    , "╚════════════════════════════════════════════╝"
+    [ "╔═══════════════════════════════════════════╗"
+    , "║  F U N C T I O N A L   A D V E N T U R E  ║"
+    , "╚═══════════════════════════════════════════╝"
     , "Type 'look' to examine your surroundings."
     , "Type 'help' or '?' for a list of commands."
     , "Type 'quit' to exit."
